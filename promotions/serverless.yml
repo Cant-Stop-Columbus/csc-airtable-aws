@@ -1,0 +1,25 @@
+service: promotions
+# app and org for use with dashboard.serverless.com
+app: cantstopcolumbus-api
+org: maharris1011
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  environment:
+    AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
+  apiGateway:
+    restApiId:
+      "Fn::ImportValue": CSCGW-restApiId
+    restApiRootResourceId:
+      "Fn::ImportValue": CSCGW-rootResourceId
+
+functions:
+  write:
+    handler: handler.writeToAirtable
+    events:
+      - http:
+          path: promotions/create
+          method: post
+          cors: true

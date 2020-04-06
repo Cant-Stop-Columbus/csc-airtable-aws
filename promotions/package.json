@@ -1,0 +1,14 @@
+{
+  "name": "promotions",
+  "version": "1.0.0",
+  "description": "api for writing to reading from airtable for cantstopcolumubs",
+  "scripts": {
+    "start": "./node_modules/.bin/sls offline start --stage dev -r us-east-2 --noTimeout --noAuth --migrate true"
+  },
+  "author": "Mark Harris (mark@fanmountain.com)",
+  "license": "MIT",
+  "dependencies": {
+    "airtable": "^0.8.1",
+    "axios": "^0.19.2"
+  }
+}
