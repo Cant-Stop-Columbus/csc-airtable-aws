@@ -31,7 +31,7 @@ jobs:
     - name: npm install dependencies
       run: |
        npm install
-      working_directory: ./gateway
+      working-directory: ./gateway
 
     - name: deploy gateway
       uses: serverless/github-action@v1.53.0
@@ -41,7 +41,7 @@ jobs:
     - name: npm install dependencies
       run: |
         npm install
-      working_directory: ./promotions
+      working-directory: ./promotions
   
     - name: deploy promotions
       uses: serverless/github-action@v1.53.0
