@@ -30,21 +30,32 @@ jobs:
 
     - name: npm install dependencies
       run: |
-       npm install
+        npm install
       working-directory: ./gateway
+
+    - run: |
+        cd ./gateway
 
     - name: deploy gateway
       uses: serverless/github-action@v1.53.0
       with:
         args: deploy
 
+    - run: |
+        cd ..
+
     - name: npm install dependencies
       run: |
         npm install
       working-directory: ./promotions
-  
+
+    - run: |
+        cd ./promotions
+
     - name: deploy promotions
       uses: serverless/github-action@v1.53.0
       with:
         args: deploy
-        
+
+    - run: |
+        cd ..
