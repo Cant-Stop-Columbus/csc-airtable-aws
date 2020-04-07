@@ -1,4 +1,4 @@
-service: promotions
+service: api
 # app and org for use with dashboard.serverless.com
 app: cantstopcolumbus-api
 org: maharris1011
@@ -9,17 +9,25 @@ provider:
   region: us-east-1
   environment:
     AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
+    AIRTABLE_BASE: apppXeg0e2C1iuT8u
+    PROMOTIONS_VIEW: "10TV Promos"
   apiGateway:
     restApiId:
       "Fn::ImportValue": CSCGW-restApiId
     restApiRootResourceId:
       "Fn::ImportValue": CSCGW-rootResourceId
 
+package:
+  exclude:
+    - .gitignore
+    - README.md
+    - tests/**
+    
 functions:
   write:
-    handler: handler.writeToAirtable
+    handler: promotions/crud.create
     events:
       - http:
-          path: promotions/create
+          path: promotions/
           method: post
           cors: true
