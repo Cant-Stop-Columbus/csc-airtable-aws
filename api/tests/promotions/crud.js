@@ -1,7 +1,13 @@
 let crud = require('../../promotions/crud')
 
+let eventBody = {
+  Business: "Mark's happy test business tuesday",
+  Promo: "Mark's promotional text to delete later",
+  Website: "https://www.cantstopcolumbus"
+}
+
 let event = {
-  body: "Business=Mark's Happy Test Business Tuesday&Promo=Mark's promotional text to delete later&Website=https://www.cantstopcolumbus.com"
+  body: JSON.stringify(eventBody)
 }
 
 let context = {
