@@ -1,16 +1,26 @@
-import * as airtable from 'airtable'
+import * as airtable from "airtable"
+
+const VIEW = process.env.PROMOTIONS_VIEW
 
 export class Promotion {
   constructor() {
     this.base = airtable.base(process.env.AIRTABLE_BASE)
   }
 
-  // list() {
-  //   return null
-  // }
+  list() {
+    // returns a promise that resolves to the list of promotions
+    return this.base(VIEW)
+      .select({
+        view: "Grid view",
+        maxRecords: 100,
+        sort: [{ field: "Business", direction: "desc" }]
+      })
+      .firstPage()
+  }
 
   create(business, text, url) {
-    return this.base(process.env.PROMOTIONS_VIEW)
+    // returns a promise that resolves to the promotion just created
+    return this.base(VIEW)
       .create([
         {
           fields: {

@@ -9,6 +9,13 @@ let create = handler(async (event, context) => {
   return retval
 })
 
+let list = handler(async (event, context) => {
+  let promotion = new Promotion()
+  let retval = await promotion.list()
+  return retval
+})
+
 export {
-  create
+  create,
+  list
 }

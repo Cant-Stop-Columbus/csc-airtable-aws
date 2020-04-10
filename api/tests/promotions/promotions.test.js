@@ -1,16 +1,17 @@
-import { Promotion } from '../../promotions/Promotion'
+import { Promotion } from "../../promotions/Promotion"
 
 let promo = new Promotion()
 
-test('creates a promotion', () => {
-  promo
-    .create(
-      'marks happy business',
-      'this is promotional text',
-      'https://www.cantstopcolumbus.com'
-    )
-    .then((retval) => {
-      expect(retval.statusCode).toEqual(200)
-      console.log(`${JSON.stringify(retval)}`)
-    })
+test("Promotions.create creates a promotion", async () => {
+  let retval = await promo.create(
+    "marks happy business",
+    "this is promotional text",
+    "https://www.cantstopcolumbus.com"
+  )
+  expect(retval.length).toBeGreaterThan(0)
+})
+
+test("Promotions.list lists all current promotions", async () => {
+  let retval = await promo.list()
+  expect(retval.length).toBeGreaterThan(0)
 })

@@ -33,10 +33,19 @@ package:
     - tests/**
     
 functions:
-  write:
+  promotions-create:
     handler: promotions/crud.create
     events:
       - http:
           path: promotions/
           method: post
           cors: true
+
+  promotions-list:
+    handler: promotions/crud.list
+    events:
+      - http:
+          path: promotions/
+          method: get
+          cors: true
+        
