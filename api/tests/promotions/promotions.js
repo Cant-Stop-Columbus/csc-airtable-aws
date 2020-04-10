@@ -7,5 +7,5 @@ promo.create(
   'this is promotional text',
   'https://www.cantstopcolumbus.com'
 ).then((retval) => {
-  console.log(`${retval.code} ${retval.message}`)
+  console.log(`${JSON.stringify(retval)}`)
 })

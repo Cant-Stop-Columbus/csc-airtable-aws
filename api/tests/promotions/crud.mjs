@@ -1,4 +1,4 @@
-let crud = require('../../promotions/crud')
+import { create } from '../../promotions/crud.mjs'
 
 let eventBody = {
   Business: "Mark's happy test business tuesday",
@@ -11,9 +11,11 @@ let event = {
 }
 
 let context = {
-  awsRequestId: "request-id-1"
+  awsRequestId: "request-id-1",
+  getRemainingTimeInMillis: () => { return 4000 }
 }
 
-crud.create(event, context, (ignore, body) => {
-  console.log(JSON.stringify(body))
+create(event, context)
+  .then((retval) => {
+  console.log(JSON.stringify(retval))
 })

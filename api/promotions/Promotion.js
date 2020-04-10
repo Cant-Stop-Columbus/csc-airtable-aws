@@ -1,7 +1,6 @@
 'use strict'
 
 const airtable = require('airtable')
-let Response = require('../helpers/responses')
 
 class Promotion {
   constructor() {
@@ -23,12 +22,6 @@ class Promotion {
           }
         }
       ])
-      .then((result) => {
-        return new Response(true, 201, result)
-      })
-      .catch((err) => {
-        return new Response(false, err.statusCode, result)
-      })
   }
 
   // read(id) {
