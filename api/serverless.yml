@@ -8,6 +8,9 @@ custom:
   # commands. Or fallsback to what we have set in the provider section.
   stage: ${opt:stage, self:provider.stage}
 
+plugins:
+  - serverless-bundle
+  - serverless-offline
 provider:
   name: aws
   runtime: nodejs12.x

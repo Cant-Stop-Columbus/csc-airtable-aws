@@ -1,8 +1,6 @@
-'use strict'
+import * as airtable from 'airtable'
 
-const airtable = require('airtable')
-
-class Promotion {
+export class Promotion {
   constructor() {
     this.base = airtable.base(process.env.AIRTABLE_BASE)
   }
@@ -69,5 +67,3 @@ class Promotion {
   //   return this.db.delete(params).promise()
   // }
 }
-
-module.exports = Promotion

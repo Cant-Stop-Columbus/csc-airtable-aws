@@ -1,4 +1,4 @@
-import { create } from '../../promotions/crud.mjs'
+import { create } from '../../promotions/crud.js'
 
 let eventBody = {
   Business: "Mark's happy test business tuesday",
@@ -15,7 +15,10 @@ let context = {
   getRemainingTimeInMillis: () => { return 4000 }
 }
 
-create(event, context)
-  .then((retval) => {
-  console.log(JSON.stringify(retval))
+test("it creates promotions", () => {
+  create(event, context)
+    .then((retval) => {
+      expect(retval.statusCode).toEqual(200)
+      console.log(JSON.stringify(retval))
+    })
 })

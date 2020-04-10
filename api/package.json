@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "api for writing to reading from airtable for cantstopcolumubs",
   "scripts": {
-    "start": "./node_modules/.bin/sls offline start --stage dev -r us-east-2 --noTimeout --noAuth --migrate true"
+    "start": "./node_modules/.bin/sls offline start --stage dev -r us-east-2 --noTimeout --noAuth --migrate true",
+    "test": "serverless-bundle test"
   },
   "author": "Mark Harris (mark@fanmountain.com)",
   "license": "MIT",
@@ -11,5 +12,11 @@
     "airtable": "^0.8.1",
     "aws-sdk": "^2.656.0",
     "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "jest": "^25.3.0",
+    "serverless": "^1.67.3",
+    "serverless-bundle": "^1.3.3",
+    "serverless-offline": "^6.1.4"
   }
 }

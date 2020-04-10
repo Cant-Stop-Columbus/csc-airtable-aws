@@ -1,4 +1,4 @@
-import * as debug from './log.mjs'
+import * as debug from './log.js'
 
 export default function handler(lambda) {
   return function (event, context) {
