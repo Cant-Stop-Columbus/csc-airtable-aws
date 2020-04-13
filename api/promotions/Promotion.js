@@ -21,7 +21,7 @@ export default class Promotion {
     })
   }
 
-  async create(business, text, url) {    
+  async create(business, text, url) {
     let ret = await this.base(VIEW)
       .create([
         {
