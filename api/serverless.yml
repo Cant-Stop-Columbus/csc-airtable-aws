@@ -39,6 +39,7 @@ package:
     - .gitignore
     - README.md
     - tests/**
+    - __mocks__/**
     
 functions:
   promotions-create:
