@@ -1,5 +1,6 @@
 import { create, list } from '../../promotions/crud.js'
-jest.mock("../../promotions/Promotion.js")
+
+jest.mock("../../promotions/airtableDataSource.js")
 
 let context = {
   awsRequestId: "request-id-1",
@@ -24,6 +25,5 @@ test("crud.list lists all promotions", async () => {
     body: null
   }
   let retval = await list(event, context)
-  console.log(JSON.stringify(retval))
   expect(retval.statusCode).toBe(200)
 })
