@@ -1,39 +1,35 @@
-import * as airtable from "airtable"
-
-const VIEW = process.env.PROMOTIONS_VIEW
-
 export default class Promotion {
-  constructor() {
-    this.base = airtable.base(process.env.AIRTABLE_BASE)
+  constructor() {}
+
+  list() {
+    return [
+      {
+        id: "rec6nsQLBeXlMYLv3",
+        fields: {
+          Business: "Walmart",
+          Promo: "Test!",
+          Website: "https://www.google.com"
+        },
+        createdTime: "2020-04-07T18:43:51.000Z"
+      },
+      {
+        id: "recREdSfzuOmAGAdT",
+        fields: {
+          Business: "Walmart",
+          Promo: "Test!",
+          Website: "https://www.google.com"
+        },
+        createdTime: "2020-04-07T18:47:51.000Z"
+      }
+    ]
   }
 
-  async list() {
-    // returns a promise that resolves to the list of promotions
-    let ret = await this.base(VIEW)
-      .select({
-        view: "Grid view",
-        maxRecords: 100,
-        sort: [{ field: "Business", direction: "desc" }]
-      })
-      .firstPage()
-    return ret.map((elem) => {
-      return elem._rawJson
-    })
-  }
-
-  async create(business, text, url) {
-    // returns a promise that resolves to the promotion just created
-    let ret = await this.base(VIEW)
-      .create([
-        {
-          fields: {
-            Business: business,
-            Promo: text,
-            Website: url
-          }
-        }
-      ])
-    return ret[0].fields
+  create(business, text, url) {
+    return {
+      Business: business,
+      Promo: text,
+      Website: url
+    }
   }
 
   // read(id) {
