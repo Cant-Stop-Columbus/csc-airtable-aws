@@ -13,7 +13,7 @@ export default class Promotion {
       .select({
         view: "Grid view",
         maxRecords: 100,
-        sort: [{ field: "Business", direction: "desc" }]
+        sort: [{ field: "Business", direction: "asc" }]
       })
       .firstPage()
     return ret.map((elem) => {
@@ -21,8 +21,7 @@ export default class Promotion {
     })
   }
 
-  async create(business, text, url) {
-    // returns a promise that resolves to the promotion just created
+  async create(business, text, url) {    
     let ret = await this.base(VIEW)
       .create([
         {
