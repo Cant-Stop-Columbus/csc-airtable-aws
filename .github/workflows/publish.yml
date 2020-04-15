@@ -31,19 +31,9 @@ jobs:
     - name: npm install dependencies
       run: |
         npm install
-      working-directory: ./gateway
+      working-directory: ./api
 
-    - name: deploy gateway
-      uses: serverless/github-action@v1.53.0
-      with:
-        args: deploy
-
-    - name: npm install dependencies
-      run: |
-        npm install
-      working-directory: ./promotions
-
-    - name: deploy promotions
+    - name: deploy api
       uses: serverless/github-action@v1.53.0
       with:
         args: deploy
