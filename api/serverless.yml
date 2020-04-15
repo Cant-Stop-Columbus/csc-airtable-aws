@@ -1,8 +1,8 @@
-service: api
 # app and org for use with dashboard.serverless.com
 app: cantstopcolumbus-api
 org: maharris1011
 
+service: api
 
 custom:
   # Our stage is based on what is passed in when running serverless
