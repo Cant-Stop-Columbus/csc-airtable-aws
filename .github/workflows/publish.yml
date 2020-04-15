@@ -33,7 +33,10 @@ jobs:
         npm install
       working-directory: ./api
 
-    - name: deploy api
-      uses: serverless/github-action@v1.53.0
+    - name: Deploy the API
+      uses: aaronpanch/action-serverless@v1.0.0
+      env:
+        SERVICE_ROOT: api
       with:
         args: deploy
+  
