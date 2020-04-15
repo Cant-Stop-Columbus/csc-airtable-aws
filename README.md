@@ -30,7 +30,7 @@ See Jest for details on how to write tests and using the test API.
 
 To execute tests prior to release:
 ```
-npm test
+npm run test
 ```
 
 The above command builds the code and executes every test suite in the `tests` directory, with the command:
@@ -58,5 +58,5 @@ serverless deploy
 or 
 
 ```
-npm deploy:prod
+npm run deploy:prod
 ```
