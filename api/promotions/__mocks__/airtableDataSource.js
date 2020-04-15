@@ -1,4 +1,4 @@
-export default class airtableDataSource {
+export default class AirtableDataSource {
   list() {
     return {
       records: [

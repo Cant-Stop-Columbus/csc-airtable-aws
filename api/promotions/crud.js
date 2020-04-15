@@ -1,10 +1,10 @@
 import handler from "../lib/handler-lib"
 import Promotion from "./Promotion"
-import airtableDataSource from "./airtableDataSource"
-import airtableTransformer from "./airtableTransformer"
+import AirtableDataSource from "./airtableDataSource"
+import AirtableTransformer from "./airtableTransformer"
 
-let dataSource = new airtableDataSource()
-let transformer = new airtableTransformer()
+let dataSource = new AirtableDataSource()
+let transformer = new AirtableTransformer()
 let promotion = new Promotion(dataSource, transformer)
 
 let create = handler(async (event, context) => {

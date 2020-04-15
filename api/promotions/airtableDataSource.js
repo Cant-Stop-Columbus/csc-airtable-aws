@@ -1,6 +1,6 @@
 import * as airtable from "airtable"
 
-export default class airtableDataSource {
+export default class AirtableDataSource {
   constructor() {
     this.base = airtable.base(process.env.AIRTABLE_BASE)
     this.view = process.env.PROMOTIONS_VIEW

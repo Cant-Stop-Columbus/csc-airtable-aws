@@ -1,4 +1,4 @@
-export default class airtableTransformer {
+export default class AirtableTransformer {
   listXform(retval) {
     // expects retval to be return from .select().firstPage()
     return retval.records.map((elem) => {

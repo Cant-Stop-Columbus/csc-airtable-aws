@@ -1,11 +1,11 @@
 import Promotion from "../../promotions/Promotion"
-import airtableDataSource from "../../promotions/airtableDataSource"
-import airtableTransformer from "../../promotions/airtableTransformer"
+import AirtableDataSource from "../../promotions/airtableDataSource"
+import AirtableTransformer from "../../promotions/airtableTransformer"
 
 jest.mock("../../promotions/airtableDataSource.js")
 
-let dataSource = new airtableDataSource()
-let transformer = new airtableTransformer()
+let dataSource = new AirtableDataSource()
+let transformer = new AirtableTransformer()
 
 let promo = new Promotion(dataSource, transformer)
 
