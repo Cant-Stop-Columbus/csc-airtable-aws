@@ -57,4 +57,28 @@ functions:
           path: promotions/
           method: get
           cors: true
-        
+
+  volunteers-create:
+    handler: volunteers/crud.create
+    events:
+      - http:
+          path: volunteers/
+          method: post
+          cors: true
+
+  volunteers-list:
+    handler: volunteers/crud.list
+    events:
+      - http:
+          path: volunteers/
+          method: get
+          cors: true          
+
+  volunteers-read:
+    handler: volunteers/crud.read
+    events:
+      - http:
+          path: volunteers/{id}
+          method: get
+          cors: true          
+                                
