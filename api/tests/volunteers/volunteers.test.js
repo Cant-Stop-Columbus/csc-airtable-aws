@@ -26,5 +26,6 @@ test("volunteers.list lists all current volunteers", async () => {
 
 test("volunteers.read returns a volunteer", async () => {
   let retval = await vol.read(1)
+  expect(retval.id).toBe("recxjfpf7NPBcQuzp")
   expect(retval["Primary Email"]).toBe("aaronansari@gmail.com")
 })

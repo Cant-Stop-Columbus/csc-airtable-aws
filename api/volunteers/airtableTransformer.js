@@ -11,6 +11,7 @@ export default class AirtableTransformer {
   }
 
   readXform(retval) {
+    retval.fields.id = retval.id
     return retval.fields
   }
 
