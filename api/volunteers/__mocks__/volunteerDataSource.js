@@ -1,4 +1,4 @@
-export default class AirtableDataSource {
+export default class VolunteerDataSource {
   list(offset = null) {
     return {
       records: [

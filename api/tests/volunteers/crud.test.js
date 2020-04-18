@@ -1,6 +1,6 @@
 import { create, list, read } from '../../volunteers/crud.js'
 
-jest.mock("../../volunteers/volunteerDataSource.js")
+jest.mock("../../volunteers/VolunteerDataSource.js")
 
 let context = {
   awsRequestId: "request-id-1",
@@ -10,8 +10,8 @@ let context = {
 test("crud.create creates volunteers", async () => {
   let event = {
     body: JSON.stringify({
-      firstName: "Mark",
-      lastName: "Harris"
+      "First Name": "Mark",
+      "Last Name": "Harris"
     })
   }
 

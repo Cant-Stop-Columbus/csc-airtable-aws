@@ -1,17 +1,13 @@
 import handler from "../lib/handler-lib"
 import Volunteer from "./Volunteer"
-import AirtableDataSource from "./volunteerDataSource"
-import AirtableTransformer from "./airtableTransformer"
+import VolunteerDataSource from "./VolunteerDataSource"
 
-let dataSource = new AirtableDataSource()
-let transformer = new AirtableTransformer()
-let volunteer = new Volunteer(dataSource, transformer)
+let dataSource = new VolunteerDataSource()
+let volunteer = new Volunteer(dataSource)
 
 let create = handler(async (event, context) => {
   const data = JSON.parse(event.body)
-  let retval = await volunteer.create(
-    data.Business, data.Promo, data.Website
-    )
+  let retval = await volunteer.create(data)
   return retval
 })
 

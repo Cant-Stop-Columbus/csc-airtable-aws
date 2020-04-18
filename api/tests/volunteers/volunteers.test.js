@@ -1,18 +1,14 @@
 import Volunteer from "../../volunteers/Volunteer"
-import AirtableDataSource from "../../volunteers/volunteerDataSource"
-import AirtableTransformer from "../../volunteers/airtableTransformer"
+import VolunteerDataSource from "../../volunteers/VolunteerDataSource"
 
-jest.mock("../../volunteers/volunteerDataSource.js")
+jest.mock("../../volunteers/VolunteerDataSource.js")
 
-let dataSource = new AirtableDataSource()
-let transformer = new AirtableTransformer()
-
-let vol = new Volunteer(dataSource, transformer)
+let vol = new Volunteer(new VolunteerDataSource())
 
 test("volunteers.create creates a volunteer", async () => {
   let person = {
-    firstName: "doesnt",
-    lastName: "matter"
+    "First Name": "doesnt",
+    "Last Name": "matter"
   }
   let volunteer = await vol.create(person)
   expect(volunteer["First Name"]).toBe("Aaron")
