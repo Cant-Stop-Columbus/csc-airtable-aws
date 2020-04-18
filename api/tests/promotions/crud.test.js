@@ -1,6 +1,6 @@
 import { create, list } from '../../promotions/crud.js'
 
-jest.mock("../../promotions/airtableDataSource.js")
+jest.mock("../../promotions/PromotionDataSource.js")
 
 let context = {
   awsRequestId: "request-id-1",

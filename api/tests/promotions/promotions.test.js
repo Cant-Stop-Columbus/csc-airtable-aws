@@ -1,23 +1,21 @@
 import Promotion from "../../promotions/Promotion"
-import AirtableDataSource from "../../promotions/airtableDataSource"
-import AirtableTransformer from "../../promotions/airtableTransformer"
+import PromotionDataSource from "../../promotions/PromotionDataSource"
 
-jest.mock("../../promotions/airtableDataSource.js")
+jest.mock("../../promotions/PromotionDataSource.js")
 
-let dataSource = new AirtableDataSource()
-let transformer = new AirtableTransformer()
-
-let promo = new Promotion(dataSource, transformer)
+let promo = new Promotion(new PromotionDataSource())
 
 test("Promotions.create creates a promotion", async () => {
-  let biz = "marks happy business"
-  let text = "this is promotional text -- delete me"
-  let url = "https://www.cantstopcolumbus.com"
+  let data = {
+    Business: "marks happy business",
+    Promo: "this is promotional text -- delete me",
+    Website: "https://www.cantstopcolumbus.com"
+  }
 
-  let retval = await promo.create(biz, text, url)
-  expect(retval.Business).toBe(biz)
-  expect(retval.Promo).toBe(text)
-  expect(retval.Website).toBe(url)
+  let retval = await promo.create(data)
+  expect(retval.Business).toBe(data.Business)
+  expect(retval.Promo).toBe(data.Promo)
+  expect(retval.Website).toBe(data.Website)
 })
 
 test("Promotions.list lists all current promotions", async () => {
