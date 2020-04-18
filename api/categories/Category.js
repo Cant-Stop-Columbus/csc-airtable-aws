@@ -1,4 +1,4 @@
-export default class Skill {
+export default class Category {
   constructor(dataSource, dataTransformer) {
     this.dataSource = dataSource
     this.transformer = dataTransformer

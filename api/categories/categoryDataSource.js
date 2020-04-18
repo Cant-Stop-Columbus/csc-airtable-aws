@@ -3,7 +3,7 @@ import * as airtable from "airtable"
 export default class AirtableDataSource {
   constructor() {
     this.base = airtable.base(process.env.AIRTABLE_BASE)
-    this.view = process.env.SKILLS
+    this.view = process.env.CATEGORIES
   }
 
   async list(offset = null) {
@@ -14,7 +14,7 @@ export default class AirtableDataSource {
       .select({
         view: "Master",
         maxRecords: 100,
-        sort: [{ field: "Skill", direction: "asc" }],
+        sort: [{ field: "Category", direction: "asc" }],
         offset: offset
       })
       .firstPage()

@@ -1,19 +1,19 @@
 import handler from "../lib/handler-lib"
-import Skill from "./Skill"
-import AirtableDataSource from "./skillDataSource"
+import Category from "./category"
+import AirtableDataSource from "./categoryDataSource"
 import AirtableTransformer from "./airtableTransformer"
 
 let dataSource = new AirtableDataSource()
 let transformer = new AirtableTransformer()
-let skill = new Skill(dataSource, transformer)
+let category = new Category(dataSource, transformer)
 
 let list = handler(async (event, context) => {
-  let retval = await skill.list()
+  let retval = await category.list()
   return retval
 })
 
 let read = handler(async (event, context) => {
-  let retval = await skill.read(event.pathParameters.id)
+  let retval = await category.read(event.pathParameters.id)
   return retval
 })
 
