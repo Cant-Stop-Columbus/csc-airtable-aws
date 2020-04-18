@@ -24,10 +24,13 @@ test("crud.list lists all volunteers", async () => {
     body: null
   }
   let retval = await list(event, context)
+  let body = JSON.parse(retval.body)
+  expect(body.length).toBeGreaterThan(1)
+  expect(body[0]["Full Name"]).toBeTruthy()
   expect(retval.statusCode).toBe(200)
 })
 
-test("crud.read lists all volunteers", async () => {
+test("crud.read returns a particular volunteer", async () => {
   let event = {
     pathParameters: {
       id: 1
@@ -36,4 +39,6 @@ test("crud.read lists all volunteers", async () => {
   }
   let retval = await read(event, context)
   expect(retval.statusCode).toBe(200)
+  let body = JSON.parse(retval.body)
+  expect(body.id).toBe(1)
 })
