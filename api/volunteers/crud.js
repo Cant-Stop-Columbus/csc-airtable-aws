@@ -1,6 +1,6 @@
 import handler from "../lib/handler-lib"
 import Volunteer from "./Volunteer"
-import AirtableDataSource from "./airtableDataSource"
+import AirtableDataSource from "./volunteerDataSource"
 import AirtableTransformer from "./airtableTransformer"
 
 let dataSource = new AirtableDataSource()
@@ -21,7 +21,7 @@ let list = handler(async (event, context) => {
 })
 
 let read = handler(async (event, context) => {
-  let retval = await volunteer.list(event.pathParameters.id)
+  let retval = await volunteer.read(event.pathParameters.id)
   return retval
 })
 

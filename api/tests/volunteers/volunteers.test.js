@@ -1,8 +1,8 @@
 import Volunteer from "../../volunteers/Volunteer"
-import AirtableDataSource from "../../volunteers/airtableDataSource"
+import AirtableDataSource from "../../volunteers/volunteerDataSource"
 import AirtableTransformer from "../../volunteers/airtableTransformer"
 
-jest.mock("../../volunteers/airtableDataSource.js")
+jest.mock("../../volunteers/volunteerDataSource.js")
 
 let dataSource = new AirtableDataSource()
 let transformer = new AirtableTransformer()
@@ -26,5 +26,5 @@ test("volunteers.list lists all current volunteers", async () => {
 
 test("volunteers.read returns a volunteer", async () => {
   let retval = await vol.read(1)
-  expect(retval.id).toBeGreaterThan("recxjfpf7NPBcQuzp")
+  expect(retval["Primary Email"]).toBe("aaronansari@gmail.com")
 })

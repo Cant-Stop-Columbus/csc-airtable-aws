@@ -1,18 +1,18 @@
 export default class Volunteer {
   constructor(dataSource, dataTransformer) {
     this.dataSource = dataSource
-    this.tranformer = dataTransformer
+    this.transformer = dataTransformer
   }
 
   async list(offset = null) {
     // returns a promise that resolves to the list of promotions
     let records = await this.dataSource.list(offset)
-    return this.tranformer.listXform(records)
+    return this.transformer.listXform(records)
   }
 
   async create(business, text, url) {
     let record = await this.dataSource.create(business, text, url)
-    return this.tranformer.createXform(record)
+    return this.transformer.createXform(record)
   }
 
   async read(id) {
