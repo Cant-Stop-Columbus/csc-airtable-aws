@@ -84,4 +84,35 @@ functions:
           path: volunteers/{id}
           method: get
           cors: true          
-                                
+
+  skills-list:
+    handler: skills/crud.list
+    events:
+      - http:
+          path: skills/
+          method: get
+          cors: true          
+
+  skills-read:
+    handler: skills/crud.read
+    events:
+      - http:
+          path: skills/{id}
+          method: get
+          cors: true          
+
+  categories-list:
+    handler: categories/crud.list
+    events:
+      - http:
+          path: categories/
+          method: get
+          cors: true          
+
+  categories-read:
+    handler: categories/crud.read
+    events:
+      - http:
+          path: categories/{id}
+          method: get
+          cors: true          
