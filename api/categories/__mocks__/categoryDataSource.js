@@ -1,4 +1,4 @@
-export default class AirtableDataSource {
+export default class CategoryDataSource {
   list(offset = null) {
     return {
       records: [

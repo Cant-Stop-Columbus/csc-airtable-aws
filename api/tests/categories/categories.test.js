@@ -1,13 +1,11 @@
 import Category from "../../categories/Category"
 import AirtableDataSource from "../../categories/categoryDataSource"
-import AirtableTransformer from "../../categories/airtableTransformer"
 
 jest.mock("../../categories/categoryDataSource.js")
 
 let dataSource = new AirtableDataSource()
-let transformer = new AirtableTransformer()
 
-let obj = new Category(dataSource, transformer)
+let obj = new Category(dataSource)
 
 test("categories.list lists all current categories", async () => {
   let categories = await obj.list()
