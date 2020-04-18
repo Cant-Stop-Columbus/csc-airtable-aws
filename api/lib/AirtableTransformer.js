@@ -6,7 +6,17 @@ export default class AirtableTransformer {
     })
   }
 
+  createXform(retval) {
+    retval[0].fields.id = retval[0].id
+    return retval[0].fields
+  }
+
   readXform(retval) {
+    retval.fields.id = retval.id
+    return retval.fields
+  }
+
+  updateXform(retval) {
     retval.fields.id = retval.id
     return retval.fields
   }

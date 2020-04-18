@@ -1,6 +1,6 @@
 import handler from "../lib/handler-lib"
 import Category from "./Category"
-import CategoryDataSource from "./categoryDataSource"
+import CategoryDataSource from "./CategoryDataSource"
 
 let obj = new Category(new CategoryDataSource())
 

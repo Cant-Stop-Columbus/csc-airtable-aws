@@ -1,11 +1,9 @@
 import Category from "../../categories/Category"
-import AirtableDataSource from "../../categories/categoryDataSource"
+import CategoryDataSource from "../../categories/CategoryDataSource"
 
-jest.mock("../../categories/categoryDataSource.js")
+jest.mock("../../categories/CategoryDataSource.js")
 
-let dataSource = new AirtableDataSource()
-
-let obj = new Category(dataSource)
+let obj = new Category(new CategoryDataSource())
 
 test("categories.list lists all current categories", async () => {
   let categories = await obj.list()
