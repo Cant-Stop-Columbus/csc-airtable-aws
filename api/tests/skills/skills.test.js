@@ -1,13 +1,11 @@
 import Skill from "../../skills/Skill"
-import AirtableDataSource from "../../skills/skillDataSource"
-import AirtableTransformer from "../../skills/airtableTransformer"
+import SkillDataSource from "../../skills/SkillDataSource"
 
-jest.mock("../../skills/skillDataSource.js")
+jest.mock("../../skills/SkillDataSource.js")
 
-let dataSource = new AirtableDataSource()
-let transformer = new AirtableTransformer()
+let dataSource = new SkillDataSource()
 
-let obj = new Skill(dataSource, transformer)
+let obj = new Skill(dataSource)
 
 test("skills.list lists all current skills", async () => {
   let skill = await obj.list()

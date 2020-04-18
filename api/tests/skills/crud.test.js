@@ -1,6 +1,6 @@
 import { list, read } from '../../skills/crud.js'
 
-jest.mock("../../skills/skillDataSource.js")
+jest.mock("../../skills/SkillDataSource.js")
 
 let context = {
   awsRequestId: "request-id-1",
