@@ -3,7 +3,7 @@ import * as airtable from "airtable"
 export default class AirtableDataSource {
   constructor() {
     this.base = airtable.base(process.env.AIRTABLE_BASE)
-    this.view = process.env.VOLUNTEERS || "People"
+    this.view = process.env.VOLUNTEERS
   }
 
   async list(offset = null) {
@@ -23,19 +23,7 @@ export default class AirtableDataSource {
   async create(person) {
     return await this.base(this.view).create([
       {
-        fields: {
-          "Primary Email": person.email,
-          Phone: person.phone,
-          LinkedIn: person.linkedIn,
-          "First Name": person.firstName,
-          "Last Name": person.lastName,
-          City: person.city,
-          State: person.state,
-          Skills: ["recFaclOv8Cj99q2a"],
-          "Talent notes": person.talentNotes,
-          "I am interested in contributing my skills to ...": person.skillsArray,
-          Passions: ["recTAnlZs3n31fBH7", "recmlBqJJ8V97o9Wg"]
-        }
+        fields: person
       }
     ])
   }
@@ -43,5 +31,9 @@ export default class AirtableDataSource {
   async read(id) {
     // returns the record corresponding to the ID supplied
     return await this.base(this.view).find(id)
+  }
+
+  async update(id, data) {
+    return await this.base(this.view).update(id, data)
   }
 }

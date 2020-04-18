@@ -6,13 +6,14 @@ export default class AirtableDataSource {
     this.view = process.env.PROMOTIONS_VIEW
   }
 
-  async list() {
+  async list(offset = null) {
     // returns a promise that resolves to the list of promotions
     return await this.base(this.view)
       .select({
         view: "Grid view",
         maxRecords: 100,
-        sort: [{ field: "Business", direction: "asc" }]
+        sort: [{ field: "Business", direction: "asc" }],
+        offset: offset
       })
       .firstPage()
   }

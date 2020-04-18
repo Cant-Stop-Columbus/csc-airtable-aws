@@ -25,4 +25,10 @@ let read = handler(async (event, context) => {
   return retval
 })
 
-export { create, list, read }
+let update = handler(async (event, context) => {
+  let data = JSON.parse(event.body)
+  let retval = await volunteer.update(event.pathParameters.id, data)
+  return retval
+})
+
+export { create, list, read, update }

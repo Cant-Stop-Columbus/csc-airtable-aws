@@ -1,5 +1,5 @@
 export default class AirtableDataSource {
-  list() {
+  list(offset = null) {
     return {
       records: [
         {
@@ -78,7 +78,7 @@ export default class AirtableDataSource {
 
   read(id) {
     return {
-      id: "recxjfpf7NPBcQuzp",
+      id: id,
       fields: {
         "Primary Email": "aaronansari@gmail.com",
         Phone: "(614) 798-8828",
@@ -102,30 +102,13 @@ export default class AirtableDataSource {
     }
   }
 
-  // update(id, info) {
-  //   // update the data with appropriate identifiers
-  //   const timestamp = new Date().getTime()
-
-  //   var params = {
-  //     TableName: this.tableName,
-  //     Key: {
-  //       id: id,
-  //     },
-  //     UpdateExpression:
-  //       'set competitors = :comp, updatedAt = :updatedAt, #loc = :loc, title = :title',
-  //     ExpressionAttributeValues: {
-  //       ':comp': info.competitors,
-  //       ':loc': info.location,
-  //       ':title': info.title,
-  //       ':updatedAt': timestamp,
-  //     },
-  //     ExpressionAttributeNames: {
-  //       '#loc': 'location',
-  //     },
-  //     ReturnValues: 'ALL_NEW',
-  //   }
-  //   return this.db.update(params).promise()
-  // }
+  update(id, info) {
+    return {
+      id: id,
+      fields: info,
+      createdTime: "2020-04-15T20:21:16.000Z"
+    }
+  }
 
   // delete(id) {
   //   const params = {
