@@ -2,7 +2,7 @@ export default class AirtableTransformer {
   constructor() {
     this.name = "AirtableTransformer"
   }
-  
+
   listXform(retval) {
     // expects retval to be return from .select().firstPage()
     try {
@@ -30,5 +30,4 @@ export default class AirtableTransformer {
     retval.fields.id = retval.id
     return retval.fields
   }
-
 }
