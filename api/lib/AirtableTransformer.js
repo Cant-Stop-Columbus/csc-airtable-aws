@@ -7,7 +7,9 @@ export default class AirtableTransformer {
     // expects retval to be return from .select().firstPage()
     try {
       return retval.map((elem) => {
-        return elem.fields
+        var data = elem.fields
+        data.id = elem.id
+        return data
       })
     } catch (error) {
       return null
