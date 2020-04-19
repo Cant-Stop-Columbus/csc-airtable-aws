@@ -32,7 +32,8 @@ export default class AirtableDataSource {
 
   async read(id) {
     // returns the record corresponding to the ID supplied
-    return await this.base(this.view).find(id)
+    let retval = await this.base(this.view).find(id)
+    return retval
   }
 
   async update(id, data) {
