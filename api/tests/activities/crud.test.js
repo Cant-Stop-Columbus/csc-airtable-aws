@@ -1,6 +1,6 @@
 import { list, read } from '../../activities/crud.js'
 
-if (process.env.MOCK === 1) {
+if (process.env.MOCK === "1") {
   jest.mock("../../activities/ActivityDataSource.js")
 }
 

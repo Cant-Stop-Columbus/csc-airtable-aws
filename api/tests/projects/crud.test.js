@@ -1,6 +1,8 @@
 import { list, read } from '../../projects/crud.js'
 
-jest.mock("../../projects/ProjectDataSource.js")
+if (process.env.MOCK === "1") {
+  jest.mock("../../projects/ProjectDataSource.js")
+}
 
 let context = {
   awsRequestId: "request-id-1",

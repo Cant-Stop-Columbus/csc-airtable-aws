@@ -1,7 +1,8 @@
 import Activity from "../../activities/Activity"
 import ActivityDataSource from "../../activities/ActivityDataSource"
 
-if (process.env.MOCK === 1) {
+if (process.env.MOCK === "1") {
+  console.log("MOCKING OUT TESTS")
   jest.mock("../../Activities/ActivityDataSource.js")
 }
 

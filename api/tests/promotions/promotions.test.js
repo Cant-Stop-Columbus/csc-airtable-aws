@@ -1,7 +1,9 @@
 import Promotion from "../../promotions/Promotion"
 import PromotionDataSource from "../../promotions/PromotionDataSource"
 
-jest.mock("../../promotions/PromotionDataSource.js")
+if (process.env.MOCK === "1") {
+  jest.mock("../../promotions/PromotionDataSource.js")
+}
 
 let promo = new Promotion(new PromotionDataSource())
 

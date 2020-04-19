@@ -1,7 +1,9 @@
 import Project from "../../projects/Project"
 import ProjectDataSource from "../../projects/ProjectDataSource"
 
-jest.mock("../../projects/ProjectDataSource.js")
+if (process.env.MOCK === "1") {
+  jest.mock("../../projects/ProjectDataSource.js")
+}
 
 let obj = new Project(new ProjectDataSource())
 

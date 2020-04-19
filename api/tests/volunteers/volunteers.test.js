@@ -1,7 +1,9 @@
 import Volunteer from "../../volunteers/Volunteer"
 import VolunteerDataSource from "../../volunteers/VolunteerDataSource"
 
-// jest.mock("../../volunteers/VolunteerDataSource.js")
+if (process.env.MOCK === "1") {
+  jest.mock("../../volunteers/VolunteerDataSource.js")
+}
 
 let vol = new Volunteer(new VolunteerDataSource())
 

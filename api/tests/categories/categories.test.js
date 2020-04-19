@@ -1,7 +1,9 @@
 import Category from "../../categories/Category"
 import CategoryDataSource from "../../categories/CategoryDataSource"
 
-// jest.mock("../../categories/CategoryDataSource.js")
+if (process.env.MOCK === "1") {
+  jest.mock("../../categories/CategoryDataSource.js")
+}
 
 let obj = new Category(new CategoryDataSource())
 

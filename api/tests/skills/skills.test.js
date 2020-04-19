@@ -1,7 +1,9 @@
 import Skill from "../../skills/Skill"
 import SkillDataSource from "../../skills/SkillDataSource"
 
-// jest.mock("../../skills/SkillDataSource.js")
+if (process.env.MOCK === "1") {
+  jest.mock("../../skills/SkillDataSource.js")
+}
 
 let dataSource = new SkillDataSource()
 

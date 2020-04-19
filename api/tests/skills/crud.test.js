@@ -1,6 +1,8 @@
 import { list, read } from '../../skills/crud.js'
 
-// jest.mock("../../skills/SkillDataSource.js")
+if (process.env.MOCK === "1") {
+  jest.mock("../../skills/SkillDataSource.js")
+}
 
 let context = {
   awsRequestId: "request-id-1",
