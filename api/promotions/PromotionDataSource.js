@@ -2,7 +2,7 @@ import AirtableDataSource from "../lib/AirtableDataSource"
 
 export default class PromotionDataSource extends AirtableDataSource {
   constructor() {
-    super(process.env.PROMOTIONS, "Business")
+    super("10tv Promos", "Business")
   }
 
   // have to implement this at this level because of the different
