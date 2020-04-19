@@ -1,6 +1,6 @@
 import { create, list, read } from '../../volunteers/crud.js'
 
-jest.mock("../../volunteers/VolunteerDataSource.js")
+// jest.mock("../../volunteers/VolunteerDataSource.js")
 
 let context = {
   awsRequestId: "request-id-1",
@@ -33,12 +33,12 @@ test("crud.list lists all volunteers", async () => {
 test("crud.read returns a particular volunteer", async () => {
   let event = {
     pathParameters: {
-      id: 1
+      id: "recpY8sstGLCVaXSp"
     },
     body: null
   }
   let retval = await read(event, context)
   expect(retval.statusCode).toBe(200)
   let body = JSON.parse(retval.body)
-  expect(body.id).toBe(1)
+  expect(body.id).toBe("recpY8sstGLCVaXSp")
 })

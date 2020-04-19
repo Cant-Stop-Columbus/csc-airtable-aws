@@ -12,7 +12,6 @@ export default class AirtableDataSource {
     // returns a promise that resolves to the list of volunteers
     // to get the next page of records, include the offset parameter
     // from the previous request
-    console.log(`view: ${this.view}`)
     let retval = await this.base(this.view)
       .select({
         view: "Master",
