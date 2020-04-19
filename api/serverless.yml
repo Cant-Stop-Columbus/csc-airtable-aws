@@ -85,6 +85,14 @@ functions:
           method: get
           cors: true          
 
+  volunteers-update:
+    handler: volunteers/crud.update
+    events:
+      - http:
+          path: volunteers/{id}
+          method: put
+          cors: true          
+        
   skills-list:
     handler: skills/crud.list
     events:
@@ -150,18 +158,34 @@ functions:
           cors: true          
 
   activities-list:
-    handler: problems/crud.list
+    handler: activities/crud.list
     events:
       - http:
-          path: problems/
+          path: activities/
           method: get
           cors: true          
 
   activities-read:
-    handler: problems/crud.read
+    handler: activities/crud.read
     events:
       - http:
-          path: problems/{id}
+          path: activities/{id}
           method: get
           cors: true          
-                                          
+
+  measurements-list:
+    handler: measurements/crud.list
+    events:
+      - http:
+          path: measurements/
+          method: get
+          cors: true          
+
+  measurements-read:
+    handler: measurements/crud.read
+    events:
+      - http:
+          path: measurements/{id}
+          method: get
+          cors: true          
+                  
