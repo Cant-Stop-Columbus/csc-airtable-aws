@@ -27,7 +27,7 @@ provider:
   environment:
     AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
     AIRTABLE_BASE: apppXeg0e2C1iuT8u
-    PROMOTIONS_VIEW: "10TV Promos"
+    PROMOTIONS: "10TV Promos"
     CATEGORIES: Categories
     SKILLS: Skills
     VOLUNTEERS: People
