@@ -1,6 +1,6 @@
 import { list, read } from '../../categories/crud.js'
 
-jest.mock("../../categories/CategoryDataSource.js")
+// jest.mock("../../categories/CategoryDataSource.js")
 
 let context = {
   awsRequestId: "request-id-1",
@@ -22,7 +22,7 @@ test("crud.list lists all categories", async () => {
 test("crud.read reads a particular category", async () => {
   let event = {
     pathParameters: {
-      id: 1
+      id: "recTmfe06GL1UuMCJ"
     },
     body: null
   }
