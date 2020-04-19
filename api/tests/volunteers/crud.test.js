@@ -7,16 +7,23 @@ let context = {
   getRemainingTimeInMillis: () => { return 4000 }
 }
 
+function randoString() {
+  return `random-${Math.floor(Math.random()*1000)}`
+}
+
 test("crud.create creates volunteers", async () => {
+  let firstName = randoString()
   let event = {
     body: JSON.stringify({
-      "First Name": "Mark",
-      "Last Name": "Harris"
+      "First Name": firstName,
+      "Last Name": randoString()
     })
   }
 
   let retval = await create(event, context)
+  let body = JSON.parse(retval.body)
   expect(retval.statusCode).toEqual(200)
+  expect(body["First Name"]).toBe(firstName)
 })
 
 test("crud.list lists all volunteers", async () => {

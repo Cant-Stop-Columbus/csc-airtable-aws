@@ -11,8 +11,8 @@ function randoString() {
 
 test("volunteers.create creates a volunteer", async () => {
   let person = {
-    "First Name": "doesnt",
-    "Last Name": "matter"
+    "First Name": randoString(),
+    "Last Name": randoString()
   }
   let volunteer = await vol.create(person)
   expect(volunteer["First Name"]).toBe(person["First Name"])
