@@ -148,4 +148,20 @@ functions:
           path: problems/{id}
           method: get
           cors: true          
-                  
+
+  activities-list:
+    handler: problems/crud.list
+    events:
+      - http:
+          path: problems/
+          method: get
+          cors: true          
+
+  activities-read:
+    handler: problems/crud.read
+    events:
+      - http:
+          path: problems/{id}
+          method: get
+          cors: true          
+                                          

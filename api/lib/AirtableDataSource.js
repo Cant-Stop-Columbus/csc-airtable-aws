@@ -1,4 +1,3 @@
-import * as log from "./log"
 import * as airtable from "airtable"
 
 export default class AirtableDataSource {
@@ -16,9 +15,12 @@ export default class AirtableDataSource {
       .select({
         view: "Master",
         maxRecords: 100,
-        sort: [{ field: this.sortField, direction: "asc" }],
+        sort: [{ field: this.sortField, direction: "asc" }]
       })
       .firstPage()
+    if (this.view === process.env.SHOW_VIEW) {
+      console.log(`list: ${JSON.stringify(retval)}`)
+    }
     return retval
   }
 
@@ -33,6 +35,9 @@ export default class AirtableDataSource {
   async read(id) {
     // returns the record corresponding to the ID supplied
     let retval = await this.base(this.view).find(id)
+    if (this.view === process.env.SHOW_VIEW) {
+      console.log(`read: ${JSON.stringify(retval)}`)
+    }
     return retval
   }
 

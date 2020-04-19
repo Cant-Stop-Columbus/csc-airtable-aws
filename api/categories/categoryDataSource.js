@@ -6,7 +6,7 @@ export default class CategoryDataSource extends AirtableDataSource {
   }
 
   async list(offset = null) {
-    // returns a promise that resolves to the list of promotions
+    // returns a promise that resolves to the list of categories
     let retval = await this.base(this.view)
       .select({
         view: "Grid view",
