@@ -10,7 +10,6 @@ export default class AirtableTransformer {
         return elem.fields
       })
     } catch (error) {
-      console.log(`${error.message}: retval = ${JSON.stringify(retval)}`)
       return null
     }
   }

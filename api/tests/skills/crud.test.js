@@ -1,6 +1,6 @@
 import { list, read } from '../../skills/crud.js'
 
-jest.mock("../../skills/SkillDataSource.js")
+// jest.mock("../../skills/SkillDataSource.js")
 
 let context = {
   awsRequestId: "request-id-1",
@@ -18,7 +18,7 @@ test("crud.list lists all skills", async () => {
 test("crud.read reads a particular skill", async () => {
   let event = {
     pathParameters: {
-      id: 1
+      id: "receR1F8GumrjWrVI"
     },
     body: null
   }
