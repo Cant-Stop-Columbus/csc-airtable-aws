@@ -1,17 +1,14 @@
 import handler from "../lib/handler-lib"
 import Promotion from "./Promotion"
-import AirtableDataSource from "./airtableDataSource"
-import AirtableTransformer from "./airtableTransformer"
+import PromotionsDataSource from "./PromotionDataSource"
 
-let dataSource = new AirtableDataSource()
-let transformer = new AirtableTransformer()
-let promotion = new Promotion(dataSource, transformer)
+let promotion = new Promotion(
+  new PromotionsDataSource()
+)
 
 let create = handler(async (event, context) => {
   const data = JSON.parse(event.body)
-  let retval = await promotion.create(
-    data.Business, data.Promo, data.Website
-    )
+  let retval = await promotion.create(data)
   return retval
 })
 

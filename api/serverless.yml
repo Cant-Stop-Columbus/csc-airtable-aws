@@ -27,7 +27,10 @@ provider:
   environment:
     AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
     AIRTABLE_BASE: apppXeg0e2C1iuT8u
-    PROMOTIONS_VIEW: "10TV Promos"
+    PROMOTIONS: "10TV Promos"
+    CATEGORIES: Categories
+    SKILLS: Skills
+    VOLUNTEERS: People
   apiGateway:
     restApiId:
       "Fn::ImportValue": CSCGW-restApiId
@@ -57,4 +60,132 @@ functions:
           path: promotions/
           method: get
           cors: true
+
+  volunteers-create:
+    handler: volunteers/crud.create
+    events:
+      - http:
+          path: volunteers/
+          method: post
+          cors: true
+
+  volunteers-list:
+    handler: volunteers/crud.list
+    events:
+      - http:
+          path: volunteers/
+          method: get
+          cors: true          
+
+  volunteers-read:
+    handler: volunteers/crud.read
+    events:
+      - http:
+          path: volunteers/{id}
+          method: get
+          cors: true          
+
+  volunteers-update:
+    handler: volunteers/crud.update
+    events:
+      - http:
+          path: volunteers/{id}
+          method: put
+          cors: true          
         
+  skills-list:
+    handler: skills/crud.list
+    events:
+      - http:
+          path: skills/
+          method: get
+          cors: true          
+
+  skills-read:
+    handler: skills/crud.read
+    events:
+      - http:
+          path: skills/{id}
+          method: get
+          cors: true          
+
+  categories-list:
+    handler: categories/crud.list
+    events:
+      - http:
+          path: categories/
+          method: get
+          cors: true          
+
+  categories-read:
+    handler: categories/crud.read
+    events:
+      - http:
+          path: categories/{id}
+          method: get
+          cors: true          
+
+  projects-list:
+    handler: projects/crud.list
+    events:
+      - http:
+          path: projects/
+          method: get
+          cors: true          
+
+  projects-read:
+    handler: projects/crud.read
+    events:
+      - http:
+          path: projects/{id}
+          method: get
+          cors: true          
+
+  problems-list:
+    handler: problems/crud.list
+    events:
+      - http:
+          path: problems/
+          method: get
+          cors: true          
+
+  problems-read:
+    handler: problems/crud.read
+    events:
+      - http:
+          path: problems/{id}
+          method: get
+          cors: true          
+
+  activities-list:
+    handler: activities/crud.list
+    events:
+      - http:
+          path: activities/
+          method: get
+          cors: true          
+
+  activities-read:
+    handler: activities/crud.read
+    events:
+      - http:
+          path: activities/{id}
+          method: get
+          cors: true          
+
+  measurements-list:
+    handler: measurements/crud.list
+    events:
+      - http:
+          path: measurements/
+          method: get
+          cors: true          
+
+  measurements-read:
+    handler: measurements/crud.read
+    events:
+      - http:
+          path: measurements/{id}
+          method: get
+          cors: true          
+                  
