@@ -1,7 +1,7 @@
 import Problem from "../../Problems/Problem"
 import ProblemDataSource from "../../Problems/ProblemDataSource"
 
-// jest.mock("../../Problems/ProblemDataSource.js")
+jest.mock("../../Problems/ProblemDataSource.js")
 
 let obj = new Problem(new ProblemDataSource())
 
