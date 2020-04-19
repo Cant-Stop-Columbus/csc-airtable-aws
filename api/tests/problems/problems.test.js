@@ -6,11 +6,11 @@ import ProblemDataSource from "../../Problems/ProblemDataSource"
 let obj = new Problem(new ProblemDataSource())
 
 test("Problems.list lists all current Problems", async () => {
-  let Problems = await obj.list()
-  expect(Problems.length).toBeGreaterThan(0)
+  let problems = await obj.list()
+  expect(problems.length).toBeGreaterThan(0)
 })
 
 test("Problems.read returns a Problem", async () => {
-  let Problem = await obj.read("rectVFkzwNnY9LuKw")
-  expect(Problem.id).toBe("rectVFkzwNnY9LuKw")
+  let problem = await obj.read("rectVFkzwNnY9LuKw")
+  expect(problem.id).toBe("rectVFkzwNnY9LuKw")
 })
