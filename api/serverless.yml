@@ -116,3 +116,36 @@ functions:
           path: categories/{id}
           method: get
           cors: true          
+
+  projects-list:
+    handler: projects/crud.list
+    events:
+      - http:
+          path: projects/
+          method: get
+          cors: true          
+
+  projects-read:
+    handler: projects/crud.read
+    events:
+      - http:
+          path: projects/{id}
+          method: get
+          cors: true          
+
+  problems-list:
+    handler: problems/crud.list
+    events:
+      - http:
+          path: problems/
+          method: get
+          cors: true          
+
+  problems-read:
+    handler: problems/crud.read
+    events:
+      - http:
+          path: problems/{id}
+          method: get
+          cors: true          
+                  
