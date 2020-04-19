@@ -189,3 +189,19 @@ functions:
           method: get
           cors: true          
                   
+  partners-list:
+    handler: partners/crud.list
+    events:
+      - http:
+          path: partners/
+          method: get
+          cors: true          
+
+  partners-read:
+    handler: partners/crud.read
+    events:
+      - http:
+          path: partners/{id}
+          method: get
+          cors: true          
+        
