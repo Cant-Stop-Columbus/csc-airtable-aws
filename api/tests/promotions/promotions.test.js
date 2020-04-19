@@ -21,5 +21,5 @@ test("Promotions.create creates a promotion", async () => {
 test("Promotions.list lists all current promotions", async () => {
   let retval = await promo.list()
   expect(retval.length).toBeGreaterThan(0)
-  expect(retval[0].Business).toBe("Walmart")
+  expect(retval[0].Business).toBe("Business1")
 })

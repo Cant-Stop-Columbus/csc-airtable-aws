@@ -9,13 +9,13 @@ export default class PromotionDataSource extends AirtableDataSource {
   // view parameter on the select clause
   async list(offset = null) {
     // returns a promise that resolves to the list of promotions
-    return await this.base(this.view)
+    let retval = await this.base(this.view)
       .select({
         view: "Grid view",
         maxRecords: 100,
-        sort: [{ field: "Business", direction: "asc" }],
-        offset: offset
+        sort: [{ field: "Business", direction: "asc" }]
       })
       .firstPage()
+    return retval
   }
 }

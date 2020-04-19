@@ -1,3 +1,4 @@
+import * as log from "./log"
 import * as airtable from "airtable"
 
 export default class AirtableDataSource {
@@ -11,7 +12,7 @@ export default class AirtableDataSource {
     // returns a promise that resolves to the list of volunteers
     // to get the next page of records, include the offset parameter
     // from the previous request
-    return await this.base(this.view)
+    let retval = await this.base(this.view)
       .select({
         view: "Master",
         maxRecords: 100,

@@ -1,8 +1,10 @@
 import handler from "../lib/handler-lib"
 import Promotion from "./Promotion"
-import PromotionDataSource from "./PromotionDataSource"
+import PromotionsDataSource from "./PromotionDataSource"
 
-let promotion = new Promotion(new PromotionDataSource())
+let promotion = new Promotion(
+  new PromotionsDataSource()
+)
 
 let create = handler(async (event, context) => {
   const data = JSON.parse(event.body)
