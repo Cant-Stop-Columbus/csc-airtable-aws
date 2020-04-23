@@ -10,7 +10,7 @@ export default class ProjectDataSource extends AirtableDataSource {
     // returns a promise that resolves to the list of promotions
     let retval = await this.base(this.view)
       .select({
-        view: "Master",
+        view: "Main Website View",
         maxRecords: 100,
         sort: [{ field: "Title", direction: "asc" }],
         filterByFormula: "AND({Status} = 'Launched', NOT('CSC Internal?' = 'Yes'), NOT('Project Website' = ''))"
