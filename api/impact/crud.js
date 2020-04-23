@@ -1,8 +1,8 @@
 import handler from "../lib/handler-lib"
-import Problem from "./Problem"
-import ProblemDataSource from "./ProblemDataSource"
+import Impact from "./Impact"
+import ImpactDataSource from "./ImpactDataSource"
 
-let obj = new Problem(new ProblemDataSource())
+let obj = new Impact(new ImpactDataSource())
 
 let list = handler(async (event, context) => {
   return await obj.list()
