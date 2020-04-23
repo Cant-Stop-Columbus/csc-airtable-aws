@@ -9,6 +9,14 @@ let context = {
   getRemainingTimeInMillis: () => { return 4000 }
 }
 
+let getId = async () => {
+  let retval = await list({body: null}, context)
+  expect(retval.statusCode).toBe(200)
+  expect(retval.body).toBeTruthy()
+  var body = JSON.parse(retval.body)
+  return body[0].id
+}
+
 test("crud.list lists all partners", async () => {
   let event = {
     body: null
@@ -23,7 +31,7 @@ test("crud.list lists all partners", async () => {
 test("crud.read reads a particular project", async () => {
   let event = {
     pathParameters: {
-      id: "recT73BdFGFXYcTRn"
+      id: await getId()
     },
     body: null
   }
@@ -31,4 +39,5 @@ test("crud.read reads a particular project", async () => {
   expect(retval.statusCode).toBe(200)
   let body = JSON.parse(retval.body)
   expect(body.Partner).toBeTruthy()
+  expect(body.id).toBe(event.pathParameters.id)
 })

@@ -13,6 +13,9 @@ test("projects.list lists all current projects", async () => {
 })
 
 test("projects.read returns a project", async () => {
-  let project = await obj.read("recJOmjpwWgofI4d0")
-  expect(project.id).toBe("recJOmjpwWgofI4d0")
+  let projects = await obj.list()
+  let projectId = projects[0].id
+
+  let project = await obj.read(projectId)
+  expect(project.id).toBe(projectId)
 })

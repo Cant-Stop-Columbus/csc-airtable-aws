@@ -15,6 +15,9 @@ test("skills.list lists all current skills", async () => {
 })
 
 test("skills.read returns a skill", async () => {
-  let skill = await obj.read("receR1F8GumrjWrVI")
-  expect(skill.id).toBe("receR1F8GumrjWrVI")
+  let skills = await obj.list()
+  let skillId = skills[0].id
+
+  let skill = await obj.read(skillId)
+  expect(skill.id).toBe(skillId)
 })

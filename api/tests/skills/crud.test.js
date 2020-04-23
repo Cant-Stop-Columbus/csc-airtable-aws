@@ -18,12 +18,21 @@ test("crud.list lists all skills", async () => {
 })
 
 test("crud.read reads a particular skill", async () => {
+  let retval = await list({body: null}, context)
+  expect(retval.statusCode).toBe(200)
+  expect(retval.body).toBeTruthy()
+  var body = JSON.parse(retval.body)
+  let skillId = body[0].id
+
   let event = {
     pathParameters: {
-      id: "receR1F8GumrjWrVI"
+      id: skillId
     },
     body: null
   }
-  let retval = await read(event, context)
-  expect(retval.statusCode).toBe(200)
+
+  let skill = await read(event, context)
+  expect(skill.statusCode).toBe(200)
+  body = JSON.parse(skill.body)
+  expect(body.id).toBe(skillId)
 })
