@@ -13,6 +13,8 @@ test("activities.list lists all current activities", async () => {
 })
 
 test("activities.read returns an activity", async () => {
-  let activity = await obj.read("rectcoBS7nwkJspXB")
-  expect(activity.id).toBe("rectcoBS7nwkJspXB")
+  let activities = await obj.list()
+  let activityId = activities[0].id
+  let activity = await obj.read(activityId)
+  expect(activity.id).toBe(activityId)
 })

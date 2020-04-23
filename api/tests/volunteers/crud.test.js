@@ -9,8 +9,16 @@ let context = {
   getRemainingTimeInMillis: () => { return 4000 }
 }
 
-function randoString() {
+let randoString = () => {
   return `random-${Math.floor(Math.random()*1000)}`
+}
+
+let getId = async () => {
+  let retval = await list({body: null}, context)
+  expect(retval.statusCode).toBe(200)
+  expect(retval.body).toBeTruthy()
+  var body = JSON.parse(retval.body)
+  return body[0].id
 }
 
 test("crud.create creates volunteers", async () => {
@@ -42,12 +50,11 @@ test("crud.list lists all volunteers", async () => {
 test("crud.read returns a particular volunteer", async () => {
   let event = {
     pathParameters: {
-      id: "recpY8sstGLCVaXSp"
-    },
-    body: null
+      id: await getId()
+    }
   }
   let retval = await read(event, context)
   expect(retval.statusCode).toBe(200)
   let body = JSON.parse(retval.body)
-  expect(body.id).toBe("recpY8sstGLCVaXSp")
+  expect(body.id).toBe(event.pathParameters.id)
 })

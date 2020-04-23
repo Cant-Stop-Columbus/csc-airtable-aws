@@ -13,6 +13,8 @@ test("partner.list lists all current partners", async () => {
 })
 
 test("partner.read returns a partner", async () => {
-  let partner = await obj.read("recT73BdFGFXYcTRn")
-  expect(partner.id).toBe("recT73BdFGFXYcTRn")
+  let partners = await obj.list()
+  let partnerId = partners[0].id
+  let partner = await obj.read(partnerId)
+  expect(partner.id).toBe(partnerId)
 })

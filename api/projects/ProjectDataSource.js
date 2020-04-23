@@ -13,7 +13,7 @@ export default class ProjectDataSource extends AirtableDataSource {
         view: "Master",
         maxRecords: 100,
         sort: [{ field: "Title", direction: "asc" }],
-        filterByFormula: "AND({Status} = 'Launched', NOT('CSC Internal?' = 'Yes'))"
+        filterByFormula: "AND({Status} = 'Launched', NOT('CSC Internal?' = 'Yes'), NOT('Project Website' = ''))"
       })
       .firstPage()
     return retval

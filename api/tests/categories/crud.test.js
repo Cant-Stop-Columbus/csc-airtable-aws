@@ -9,6 +9,14 @@ let context = {
   getRemainingTimeInMillis: () => { return 4000 }
 }
 
+let getCategoryId = async () => {
+  let retval = await list({body: null}, context)
+  expect(retval.statusCode).toBe(200)
+  expect(retval.body).toBeTruthy()
+  var body = JSON.parse(retval.body)
+  return body[0].id
+}
+
 test("crud.list lists all categories", async () => {
   let event = {
     body: null
@@ -18,19 +26,22 @@ test("crud.list lists all categories", async () => {
   expect(retval.statusCode).toBe(200)
   expect(body.length).toBeGreaterThan(1)
   expect(body[0].Category).toBeTruthy()
-  expect(body[0].Problems).toBeTruthy()
+  expect(body[0].Ideas).toBeTruthy()
+  expect(body[0].People).toBeTruthy()
 })
 
 test("crud.read reads a particular category", async () => {
   let event = {
     pathParameters: {
-      id: "recTmfe06GL1UuMCJ"
-    },
-    body: null
+      id: await getCategoryId()
+    }
   }
-  let retval = await read(event, context)
-  expect(retval.statusCode).toBe(200)
-  let body = JSON.parse(retval.body)
+  let category = await read(event, context)
+  expect(category.statusCode).toBe(200)
+  expect(category.body).toBeTruthy()
+  var body = JSON.parse(category.body)
+  expect(body.id).toBe(event.pathParameters.id)
   expect(body.Category).toBeTruthy()
-  expect(body.Problems).toBeTruthy()
+  expect(body.Ideas).toBeTruthy()
+  expect(body.People).toBeTruthy()
 })
