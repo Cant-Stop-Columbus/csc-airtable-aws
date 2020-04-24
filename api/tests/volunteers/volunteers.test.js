@@ -3,7 +3,7 @@ import Skill from "../../skills/Skill"
 import VolunteerDataSource from "../../volunteers/VolunteerDataSource"
 import SkillDataSource from "../../skills/SkillDataSource"
 
-if (process.env.MOCK === "1") {
+if (process.env.MOCK) {
   jest.mock("../../volunteers/VolunteerDataSource.js")
 }
 

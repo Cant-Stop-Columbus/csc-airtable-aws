@@ -1,7 +1,7 @@
 import Partner from "../../partners/Partner"
 import PartnerDataSource from "../../partners/PartnerDataSource"
 
-if (process.env.MOCK === "1") {
+if (process.env.MOCK) {
   jest.mock("../../partners/PartnerDataSource.js")
 }
 

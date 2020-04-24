@@ -1,6 +1,6 @@
 import { list, read } from '../../skills/crud.js'
 
-if (process.env.MOCK === "1") {
+if (process.env.MOCK) {
   jest.mock("../../skills/SkillDataSource.js")
 }
 

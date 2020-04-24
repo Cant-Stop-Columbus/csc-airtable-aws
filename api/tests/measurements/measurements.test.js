@@ -1,7 +1,7 @@
 import Measurement from "../../measurements/Measurement"
 import MeasurementDataSource from "../../measurements/MeasurementDataSource"
 
-if (process.env.MOCK === "1") {
+if (process.env.MOCK) {
   jest.mock("../../Measurements/MeasurementDataSource.js")
 }
 

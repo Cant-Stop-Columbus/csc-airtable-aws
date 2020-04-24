@@ -1,6 +1,6 @@
 import { list, read } from '../../categories/crud.js'
 
-if (process.env.MOCK === "1") {
+if (process.env.MOCK) {
   jest.mock("../../categories/CategoryDataSource.js")
 }
 

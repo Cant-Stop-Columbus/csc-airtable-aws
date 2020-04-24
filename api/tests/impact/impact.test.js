@@ -1,7 +1,7 @@
 import Impact from "../../Impact/Impact"
 import ImpactDataSource from "../../Impact/ImpactDataSource"
 
-if (process.env.MOCK === "1") {
+if (process.env.MOCK) {
   jest.mock("../../impact/ImpactDataSource.js")
 }
 

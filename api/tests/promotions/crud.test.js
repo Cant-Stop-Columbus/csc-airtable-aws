@@ -1,6 +1,6 @@
 import { create, list } from '../../promotions/crud.js'
 
-if (process.env.MOCK === "1") {
+if (process.env.MOCK) {
   jest.mock("../../promotions/PromotionDataSource.js")
 }
 
