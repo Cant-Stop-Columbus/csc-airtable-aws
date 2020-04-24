@@ -20,7 +20,7 @@ test("projects.read returns a project", async () => {
   expect(project.id).toBe(projectId)
 })
 
-test("projects.list expands categories within the projects", async () => {
+test("projects.list expands impacts within the projects", async () => {
   let projects = await obj.list()
-  expect(projects[0].Category[0].Category).toBeTruthy()
+  expect(projects[0]["Primary Impact Area"][0].id).toBeTruthy()
 })

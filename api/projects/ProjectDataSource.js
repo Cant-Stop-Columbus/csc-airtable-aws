@@ -1,6 +1,6 @@
 import AirtableDataSource from "../lib/AirtableDataSource"
-import Category from "../categories/Category"
-import CategoryDataSource from "../categories/CategoryDataSource"
+import Impact from "../impact/Impact"
+import ImpactDataSource from "../impact/ImpactDataSource"
 
 export default class ProjectDataSource extends AirtableDataSource {
   constructor() {
@@ -9,8 +9,8 @@ export default class ProjectDataSource extends AirtableDataSource {
 
   // only return projects for whom Status="Launched"
   async list(offset = null) {
-    let categoryList = new Category(new CategoryDataSource())
-    let categories = await categoryList.list()
+    let impactList = new Impact(new ImpactDataSource())
+    let impacts = await impactList.list()
 
     // returns a promise that resolves to the list of promotions
     let retval = await this.base(this.view)
@@ -22,13 +22,11 @@ export default class ProjectDataSource extends AirtableDataSource {
       })
       .firstPage()
 
-    // expand categories to include all data
+    // expand impacts to include all data
     return retval.map((project) => {
-      if (project.fields.hasOwnProperty("Category")) {
-        project.fields.Category = categories.filter((cat) => {
-          return cat.id === project.fields.Category[0]
-        })
-      }
+      project.fields["Primary Impact Area"] = impacts.filter((impact) => {
+        return impact.id === project.fields["Primary Impact Area"][0]
+      })
       return project
     })
   }
