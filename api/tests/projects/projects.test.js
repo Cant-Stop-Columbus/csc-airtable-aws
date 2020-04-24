@@ -1,7 +1,9 @@
 import Project from "../../projects/Project"
 import ProjectDataSource from "../../projects/ProjectDataSource"
 
-jest.mock("../../projects/ProjectDataSource.js")
+if (process.env.MOCK) {
+  jest.mock("../../projects/ProjectDataSource.js")
+}
 
 let obj = new Project(new ProjectDataSource())
 
@@ -20,6 +22,5 @@ test("projects.read returns a project", async () => {
 
 test("projects.list expands impacts within the projects", async () => {
   let projects = await obj.list()
-  console.log(`received ${JSON.stringify(projects[0]["Primary Impact Area"])}`)
   expect(projects[0]["Primary Impact Area"][0].id).toBeTruthy()
 })
