@@ -14,11 +14,12 @@ export default class AirtableDataSource {
     let retval = await this.base(this.view)
       .select({
         view: "Master",
-        maxRecords: 100,
         sort: [{ field: this.sortField, direction: "asc" }]
       })
-      .firstPage()
+      .all()
+
     if (this.view === process.env.SHOW_VIEW) {
+      console.log(`table: ${this.view} : records = ${retval.length}`)
       console.log(`list: ${JSON.stringify(retval)}`)
     }
     return retval
