@@ -28,6 +28,13 @@ provider:
     AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
     AIRTABLE_BASE: apppXeg0e2C1iuT8u
     PHOTOS_BUCKET: volunteer-photos
+    REGION: ${opt:region, self:provider.region}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:DeleteObject
+      Resource: "arn:aws:s3:::${self:provider.environment.PHOTOS_BUCKET}/*"
   apiGateway:
     restApiId:
       "Fn::ImportValue": CSCGW-restApiId
@@ -65,17 +72,6 @@ functions:
           path: volunteers/
           method: post
           cors: true
-    environment:
-      REGION: ${opt:region, self:provider.region}
-    iamRoleStatements:
-    - Effect: "Allow"
-      Action:
-      - "s3:PutObject"
-      Resource: "arn:aws:s3:::${self:provider.environment.PHOTOS_BUCKET}/*"
-    - Effect: "Allow"
-      Action:
-      - "s3:DeleteObject"
-      Resource: "arn:aws:s3:::${self:provider.environment.PHOTOS_BUCKET}/*"
 
   volunteers-list:
     handler: volunteers/crud.list
