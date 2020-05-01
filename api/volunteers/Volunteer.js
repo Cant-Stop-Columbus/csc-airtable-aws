@@ -1,7 +1,6 @@
 import AirtableObject from "../lib/AirtableObject"
 const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
 import uuid from 'uuid-random';
-import volunteer from "../tests/volunteers/volunteer";
 
 export default class Volunteer extends AirtableObject {
   constructor(dataSource) {

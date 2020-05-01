@@ -29,4 +29,4 @@ let volunteer = {
   "COC Affirmation": true
 }
 
-export default volunteer 
+export default volunteer
