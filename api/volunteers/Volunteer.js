@@ -29,7 +29,7 @@ export default class Volunteer extends AirtableObject {
       await s3.putObject(destparams).promise()
     }
     catch (error) {
-      console.log(error)
+      console.error(`error writing file to s3: ${error})
       return null
     }
 
