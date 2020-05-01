@@ -22,13 +22,21 @@ plugins:
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: dev
-  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  logRetentionInDays: 3
+  usagePlan: # Optional usage plan configuration
+    quota:
+      limit: 5000
+      offset: 2
+      period: MONTH
+    throttle:
+      burstLimit: 200
+      rateLimit: 100  
   environment:
     AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
     AIRTABLE_BASE: apppXeg0e2C1iuT8u
     PHOTOS_BUCKET: volunteer-photos
-    REGION: ${opt:region, self:provider.region}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -41,7 +49,17 @@ provider:
     restApiRootResourceId:
       "Fn::ImportValue": CSCGW-rootResourceId
 
+resources:
+  Resources:
+    PhotosBucket:
+      Type: 'AWS::S3::Bucket'
+      Properties:
+        BucketName: ${self:provider.environment.PHOTOS_BUCKET}
+        AccessControl: public-read    
+
 package:
+  excludeDevDependencies: true
+  individually: true  
   exclude:
     - .gitignore
     - README.md
@@ -49,21 +67,6 @@ package:
     - __mocks__/**
     
 functions:
-  promotions-create:
-    handler: promotions/crud.create
-    events:
-      - http:
-          path: promotions/
-          method: post
-          cors: true
-
-  promotions-list:
-    handler: promotions/crud.list
-    events:
-      - http:
-          path: promotions/
-          method: get
-          cors: true
 
   volunteers-create:
     handler: volunteers/crud.create
@@ -209,9 +212,3 @@ functions:
           method: get
           cors: true          
         
-resources:
-  Resources:
-    PhotosBucket:
-      Type: 'AWS::S3::Bucket'
-      Properties:
-        BucketName: ${self:provider.environment.PHOTOS_BUCKET}
