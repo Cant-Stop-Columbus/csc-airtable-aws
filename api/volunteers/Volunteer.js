@@ -10,8 +10,8 @@ export default class Volunteer extends AirtableObject {
   async uploadFile(fileData) {
     const s3 = new AWS.S3();
 
-    let url = `http://${process.env.PHOTOS_BUCKET}.s3-website.${process.env.REGION}.amazonaws.com`
     let dstBucket = process.env.PHOTOS_BUCKET
+    let url = `http://${dstBucket}.s3.amazonaws.com`
     let dstKey = uuid()
 
     let buf = Buffer.from(fileData.replace(/^data:image\/\w+;base64,/, ""),'base64')
