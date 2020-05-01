@@ -30,7 +30,7 @@ export default class Volunteer extends AirtableObject {
     }
     catch (error) {
       console.error(`error writing file to s3: ${error}`)
-      return null
+      throw error
     }
 
     return `${url}/${dstKey}`
