@@ -52,10 +52,26 @@ provider:
 resources:
   Resources:
     PhotosBucket:
-      Type: 'AWS::S3::Bucket'
+      Type: "AWS::S3::Bucket"
       Properties:
         BucketName: ${self:provider.environment.PHOTOS_BUCKET}
-        AccessControl: PublicRead   
+        AccessControl: PublicRead
+
+    PhotosBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      DependsOn: PhotosBucket
+      Properties: 
+        Bucket: 
+          Ref: PhotosBucket
+        PolicyDocument: 
+          Statement: 
+            - 
+              Action: 
+                - "s3:GetObject"
+              Effect: "Allow"
+              Resource:
+                Fn::Join: ['', [Fn::GetAtt: [ PhotosBucket, Arn ], '/*'] ]
+              Principal: "*"
 
 package:
   excludeDevDependencies: true
