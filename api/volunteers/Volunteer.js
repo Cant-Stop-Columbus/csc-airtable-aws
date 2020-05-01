@@ -18,20 +18,14 @@ export default class Volunteer extends AirtableObject {
     let type = fileData.split(';')[0].split('/')[1];
 
     // Upload the thumbnail image to the destination bucket
-    try {
-      let destparams = {
-        Bucket: dstBucket,
-        Key: dstKey,
-        Body: buf,
-        ContentEncoding: 'base64',
-        ContentType: `image/${type}`
-      }
-      await s3.putObject(destparams).promise()
+    let destparams = {
+      Bucket: dstBucket,
+      Key: dstKey,
+      Body: buf,
+      ContentEncoding: 'base64',
+      ContentType: `image/${type}`
     }
-    catch (error) {
-      console.error(`error writing file to s3: ${error}`)
-      throw error
-    }
+    await s3.putObject(destparams).promise()
 
     return `${url}/${dstKey}`
   }
