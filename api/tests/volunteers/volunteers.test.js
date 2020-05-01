@@ -2,6 +2,7 @@ import Volunteer from "../../volunteers/Volunteer"
 import Skill from "../../skills/Skill"
 import VolunteerDataSource from "../../volunteers/VolunteerDataSource"
 import SkillDataSource from "../../skills/SkillDataSource"
+import person from './volunteer'
 
 if (process.env.MOCK) {
   jest.mock("../../volunteers/VolunteerDataSource.js")
@@ -21,6 +22,14 @@ test("volunteers.create creates a volunteer", async () => {
   }
   let volunteer = await vol.create(person)
   expect(volunteer["First Name"]).toBe(person["First Name"])
+})
+
+test("upload file uploads a file", async () => {
+
+  expect(person.photo).not.toBeNull()
+
+  let url = await vol.uploadFile(person.photo)
+  expect(url).not.toBeNull()
 })
 
 test("volunteers.list lists all current volunteers", async () => {

@@ -1,4 +1,5 @@
 import { create, list, read } from '../../volunteers/crud.js'
+import volunteer from './volunteer'
 
 if (process.env.MOCK) {
   jest.mock("../../volunteers/VolunteerDataSource.js")
@@ -21,13 +22,29 @@ let getId = async () => {
   return body[0].id
 }
 
-test("crud.create creates volunteers", async () => {
+test("crud.create creates volunteers without photos", async () => {
   let firstName = randoString()
   let event = {
     body: JSON.stringify({
       "First Name": firstName,
       "Last Name": randoString()
     })
+  }
+
+  let retval = await create(event, context)
+  let body = JSON.parse(retval.body)
+  expect(retval.statusCode).toEqual(200)
+  expect(body["First Name"]).toBe(firstName)
+})
+
+test("crud.create creates volunteers with photos", async () => {
+
+  volunteer["First Name"] = randoString()
+  let firstName = volunteer["First Name"]
+  volunteer["Last Name"] = randoString()
+
+  let event = {
+    body: JSON.stringify(volunteer)
   }
 
   let retval = await create(event, context)

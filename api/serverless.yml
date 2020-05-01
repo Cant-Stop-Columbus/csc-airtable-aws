@@ -27,10 +27,7 @@ provider:
   environment:
     AIRTABLE_API_KEY: ${env:AIRTABLE_API_KEY}
     AIRTABLE_BASE: apppXeg0e2C1iuT8u
-    PROMOTIONS: "10TV Promos"
-    CATEGORIES: Categories
-    SKILLS: Skills
-    VOLUNTEERS: People
+    PHOTOS_BUCKET: volunteer-photos
   apiGateway:
     restApiId:
       "Fn::ImportValue": CSCGW-restApiId
@@ -68,6 +65,17 @@ functions:
           path: volunteers/
           method: post
           cors: true
+    environment:
+      REGION: ${opt:region, self:provider.region}
+    iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+      - "s3:PutObject"
+      Resource: "arn:aws:s3:::${self:provider.environment.PHOTOS_BUCKET}/*"
+    - Effect: "Allow"
+      Action:
+      - "s3:DeleteObject"
+      Resource: "arn:aws:s3:::${self:provider.environment.PHOTOS_BUCKET}/*"
 
   volunteers-list:
     handler: volunteers/crud.list
@@ -205,3 +213,9 @@ functions:
           method: get
           cors: true          
         
+resources:
+  Resources:
+    PhotosBucket:
+      Type: 'AWS::S3::Bucket'
+      Properties:
+        BucketName: ${self:provider.environment.PHOTOS_BUCKET}

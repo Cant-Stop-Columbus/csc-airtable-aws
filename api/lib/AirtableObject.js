@@ -12,8 +12,8 @@ export default class AirtableObject {
     return this.transformer.listXform(records)
   }
 
-  async create(business, text, url) {
-    let record = await this.dataSource.create(business, text, url)
+  async create(data) {
+    let record = await this.dataSource.create(data)
     return this.transformer.createXform(record)
   }
 
@@ -22,8 +22,8 @@ export default class AirtableObject {
     return this.transformer.readXform(record)
   }
 
-  async update(id, person) {
-    let record = await this.dataSource.update(id, person)
+  async update(id, data) {
+    let record = await this.dataSource.update(id, data)
     return this.transformer.updateXform(record)
   }
 }
