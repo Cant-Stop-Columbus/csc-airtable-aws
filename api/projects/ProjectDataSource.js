@@ -16,7 +16,6 @@ export default class ProjectDataSource extends AirtableDataSource {
     let impacts = await impactList.list()
     let categories = await categoryList.list()
 
-    // returns a promise that resolves to the list of promotions
     let retval = await this.base(this.view)
       .select({
         view: "Main Website View",

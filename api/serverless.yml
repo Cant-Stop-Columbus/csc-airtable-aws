@@ -55,7 +55,7 @@ resources:
       Type: 'AWS::S3::Bucket'
       Properties:
         BucketName: ${self:provider.environment.PHOTOS_BUCKET}
-        AccessControl: public-read    
+        AccessControl: PublicRead   
 
 package:
   excludeDevDependencies: true

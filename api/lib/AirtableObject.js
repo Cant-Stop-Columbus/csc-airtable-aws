@@ -7,7 +7,6 @@ export default class AirtableObject {
   }
 
   async list(offset = null) {
-    // returns a promise that resolves to the list of promotions
     let records = await this.dataSource.list(offset)
     return this.transformer.listXform(records)
   }
