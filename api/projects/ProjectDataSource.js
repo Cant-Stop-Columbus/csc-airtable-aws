@@ -1,6 +1,4 @@
 import AirtableDataSource from "../lib/AirtableDataSource"
-import Impact from "../impact/Impact"
-import ImpactDataSource from "../impact/ImpactDataSource"
 import Category from "../categories/Category"
 import CategoryDataSource from "../categories/CategoryDataSource"
 
@@ -11,12 +9,10 @@ export default class ProjectDataSource extends AirtableDataSource {
 
   // only return projects for whom Status="Launched"
   async list(offset = null) {
-    let impactList = new Impact(new ImpactDataSource())
-    let categoryList = new Category(new CategoryDataSource())
-    let impacts = await impactList.list()
-    let categories = await categoryList.list()
+    let categoryObj = new Category(new CategoryDataSource())
+    let categories = await categoryObj.list()
 
-    let retval = await this.base(this.view)
+    let projects = await this.base(this.view)
       .select({
         view: "Main Website View",
         maxRecords: 100,
@@ -25,18 +21,14 @@ export default class ProjectDataSource extends AirtableDataSource {
       })
       .firstPage()
 
-    // expand impacts to include all data
-    retval = retval.map((project) => {
-      project.fields["Primary Impact Area"] = impacts.filter((impact) => {
-        return impact.id === project.fields["Primary Impact Area"][0]
-      })
-      return project
-    })
+    let findMatchingCategoryObject = (catId) => {
+      return categories.filter((category) => category.id = catId)[0]
+    }
 
     // expand categories inside project also
-    return retval.map((project) => {
-      project.fields.Category = categories.filter((category) => {
-        return category.id === project.fields.Category[0]
+    return projects.map((project) => {
+      project.fields.Category = project.fields.Category.map((catId) => {
+        return findMatchingCategoryObject(catId)
       })
       return project
     })
