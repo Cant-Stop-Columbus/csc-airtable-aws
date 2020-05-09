@@ -22,7 +22,7 @@ export default class ProjectDataSource extends AirtableDataSource {
       .firstPage()
 
     let findMatchingCategoryObject = (catId) => {
-      return categories.filter((category) => category.id = catId)[0]
+      return categories.filter((category) => category.id === catId)[0]
     }
 
     // expand categories inside project also
