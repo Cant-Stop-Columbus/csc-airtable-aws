@@ -8,7 +8,7 @@
     "test:nomock": "serverless-bundle test",
     "deploy:prod": "npm run test && serverless deploy"
   },
-  "author": "Mark Harris (mark@fanmountain.com)",
+  "author": "Mark Harris (mark@isandlot.com)",
   "license": "MIT",
   "dependencies": {
     "airtable": "^0.8.1",
