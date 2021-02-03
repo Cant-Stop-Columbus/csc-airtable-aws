@@ -8,6 +8,9 @@ export default class Volunteer extends AirtableObject {
   }
 
   async uploadFile(fileData) {
+    if (null == fileData) {
+      return null
+    }
     const s3 = new AWS.S3();
 
     let dstBucket = process.env.PHOTOS_BUCKET
@@ -36,13 +39,12 @@ export default class Volunteer extends AirtableObject {
       let url = await this.uploadFile(volunteerData.photo)
 
       if (url == null) {
-        console.error('file upload failed')
-        return {}
+        console.log('no photo uploaded')
       }
       else {
-        delete volunteerData.photo
         volunteerData["Photo Upload"] = [{ url: url }]
       }
+      delete volunteerData.photo
     }
 
     // save the data
