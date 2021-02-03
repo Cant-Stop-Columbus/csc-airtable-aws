@@ -8,7 +8,7 @@ export default class Volunteer extends AirtableObject {
   }
 
   async uploadFile(fileData) {
-    if (null == fileData) {
+    if (fileData == null) {
       return null
     }
     const s3 = new AWS.S3();
