@@ -39,12 +39,12 @@ test("crud.create creates volunteers without photos", async () => {
 
 test("crud.create creates volunteers with photos", async () => {
 
-  volunteer["First Name"] = randoString()
-  let firstName = volunteer["First Name"]
-  volunteer["Last Name"] = randoString()
-
+  let firstName = randoString()
   let event = {
-    body: JSON.stringify(volunteer)
+    body: JSON.stringify({
+      "First Name": firstName,
+      "Last Name": randoString()
+    })
   }
 
   let retval = await create(event, context)
