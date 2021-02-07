@@ -27,11 +27,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
+        
     - name: Install Serverless Framework
       run: npm install -g serverless
 
-    - name: Serverless Authentication
-      run: serverless config credentials --provider aws --key ${{secrets.AWS_ACCESS_KEY_ID}} --secret ${{secrets.AWS_SECRET_ACCESS_KEY}}
+    # - name: Serverless Authentication
+    #   run: serverless config credentials --provider aws --key ${{secrets.AWS_ACCESS_KEY_ID}} --secret ${{secrets.AWS_SECRET_ACCESS_KEY}}
 
     - name: install NPM dependencies
       run: |
