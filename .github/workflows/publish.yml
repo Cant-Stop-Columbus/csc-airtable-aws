@@ -28,14 +28,15 @@ jobs:
       with:
         node-version: 12.x
 
-    - name: npm install dependencies
+    - name: install and deploy
       run: |
         npm install
+        serverless deploy --verbose --stage dev
       working-directory: "./api"
 
-    - name: Deploy to AWS
-      run: serverless deploy -v -s dev
-      working-directory: "./api"
+    # - name: Deploy to AWS
+    #   run: serverless deploy -v -s dev
+    #   working-directory: "./api"
 
     # - name: Deploy the API
     #   uses: aaronpanch/action-serverless@v1.0.0
