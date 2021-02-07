@@ -41,3 +41,4 @@ admin.env
 _meta
 .serverless
 .webpack
+.cache-loader
