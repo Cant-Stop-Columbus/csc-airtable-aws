@@ -33,10 +33,14 @@ jobs:
         npm install
       working-directory: ./api
 
-    - name: Deploy the API
-      uses: aaronpanch/action-serverless@v1.0.0
-      env:
-        SERVICE_ROOT: api
-      with:
-        args: deploy
+    - name: Deploy to AWS
+      run: serverless deploy -v -s dev
+      working-directory: "./api"
+
+    # - name: Deploy the API
+    #   uses: aaronpanch/action-serverless@v1.0.0
+    #   env:
+    #     SERVICE_ROOT: api
+    #   with:
+    #     args: deploy
   
