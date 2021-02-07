@@ -31,7 +31,7 @@ jobs:
     - name: npm install dependencies
       run: |
         npm install
-      working-directory: ./api
+      working-directory: "./api"
 
     - name: Deploy to AWS
       run: serverless deploy -v -s dev
