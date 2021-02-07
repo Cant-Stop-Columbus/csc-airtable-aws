@@ -1,6 +1,6 @@
 import handler from "../lib/handler-lib"
-import Volunteer from "./Volunteer"
-import VolunteerDataSource from "./VolunteerDataSource"
+import Volunteer from "Volunteer"
+import VolunteerDataSource from "VolunteerDataSource"
 
 let dataSource = new VolunteerDataSource()
 let volunteer = new Volunteer(dataSource)
